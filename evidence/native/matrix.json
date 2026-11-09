@@ -1,0 +1,1274 @@
+{
+  "name": "bright-stone-819",
+  "timestamp": "2026-11-09T07:28:39.864904-08:00",
+  "duration": "3.526s",
+  "config": {
+    "agent": "agent.yaml",
+    "judge_model": "openai/gpt-5.6-terra",
+    "judge_type": "llm",
+    "concurrency": 1,
+    "evals_dir": ".local/evals-matrix",
+    "base_image": "alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f",
+    "agent_image": "docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341",
+    "container_runtime": "docker"
+  },
+  "summary": {
+    "total_evals": 7,
+    "failed_evals": 0,
+    "total_cost": 0,
+    "sizes_passed": 0,
+    "sizes_total": 0,
+    "tools_f1_sum": 4.6,
+    "tools_count": 5,
+    "relevance_passed": 0,
+    "relevance_total": 0,
+    "assertions_passed": 1,
+    "assertions_total": 1
+  },
+  "sessions": [
+    {
+      "id": "456f1cdd-c443-4d3b-97ea-16745fdeb08d",
+      "origin": "run",
+      "title": "empty_expected_no_call",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": true,
+        "cost": 0,
+        "output_tokens": 5,
+        "checks": {}
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=empty_expected_no_call. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:41.83777418Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case empty_expected_no_call completed.",
+              "created_at": "2026-11-09T15:28:41.843691513Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:41.93389-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "3a85037d-3957-4d5d-b79c-3a970420fb33",
+      "origin": "run",
+      "title": "empty_expected_with_call",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": true,
+        "cost": 0,
+        "output_tokens": 10,
+        "checks": {}
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=empty_expected_with_call. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:42.075926513Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_empty_expected_with_call_0",
+                  "type": "function",
+                  "function": {
+                    "name": "extra_lookup",
+                    "arguments": "{\"item_id\":\"item-X\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "extra_lookup",
+                  "category": "shell",
+                  "description": "Return a synthetic extra item identifier.",
+                  "parameters": {
+                    "properties": {
+                      "item_id": {
+                        "description": "Synthetic extra item identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "item_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.082316346Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "extra:item-X\n",
+              "tool_call_id": "call_empty_expected_with_call_0",
+              "created_at": "2026-11-09T15:28:42.082728721Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case empty_expected_with_call completed.",
+              "created_at": "2026-11-09T15:28:42.085534263Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:42.178362-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "c97a7ff0-470f-4530-b5e4-f36af68ea87e",
+      "origin": "run",
+      "title": "positive",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": true,
+        "successes": [
+          "tool calls"
+        ],
+        "cost": 0,
+        "output_tokens": 15,
+        "checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=positive. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:42.32253418Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_positive_0",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.32902693Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_positive_0",
+              "created_at": "2026-11-09T15:28:42.329440472Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_positive_1",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.331451097Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_positive_1",
+              "created_at": "2026-11-09T15:28:42.33174718Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case positive completed.",
+              "created_at": "2026-11-09T15:28:42.334464513Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:42.410926-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "1df7a8cb-6588-46c2-8c1d-73cc614b7fbc",
+      "origin": "run",
+      "title": "reordered",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": true,
+        "successes": [
+          "tool calls"
+        ],
+        "cost": 0,
+        "output_tokens": 15,
+        "checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=reordered. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:42.566325222Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_reordered_0",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.570450263Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_reordered_0",
+              "created_at": "2026-11-09T15:28:42.570857097Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_reordered_1",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.573096347Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_reordered_1",
+              "created_at": "2026-11-09T15:28:42.573389888Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case reordered completed.",
+              "created_at": "2026-11-09T15:28:42.576278347Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:42.656536-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "d4d40695-4aa7-4ff9-be28-4cbd3c513f19",
+      "origin": "run",
+      "title": "repeated",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": false,
+        "failures": [
+          "tool calls score 0.80"
+        ],
+        "cost": 0,
+        "output_tokens": 20,
+        "checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=repeated. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:42.803093013Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_repeated_0",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.810759888Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_repeated_0",
+              "created_at": "2026-11-09T15:28:42.811503513Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_repeated_1",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.81427793Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_repeated_1",
+              "created_at": "2026-11-09T15:28:42.814568222Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_repeated_2",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:42.817273388Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_repeated_2",
+              "created_at": "2026-11-09T15:28:42.817575097Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case repeated completed.",
+              "created_at": "2026-11-09T15:28:42.819625638Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:42.898394-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "5845c541-e8c6-40f1-847a-ade1414c69bd",
+      "origin": "run",
+      "title": "unexpected",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": false,
+        "failures": [
+          "tool calls score 0.80"
+        ],
+        "cost": 0,
+        "output_tokens": 20,
+        "checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=unexpected. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:43.036294055Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_unexpected_0",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:43.040865389Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_unexpected_0",
+              "created_at": "2026-11-09T15:28:43.041620055Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_unexpected_1",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:43.044762555Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_unexpected_1",
+              "created_at": "2026-11-09T15:28:43.045558555Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_unexpected_2",
+                  "type": "function",
+                  "function": {
+                    "name": "extra_lookup",
+                    "arguments": "{\"item_id\":\"item-X\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "extra_lookup",
+                  "category": "shell",
+                  "description": "Return a synthetic extra item identifier.",
+                  "parameters": {
+                    "properties": {
+                      "item_id": {
+                        "description": "Synthetic extra item identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "item_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:43.04841518Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "extra:item-X\n",
+              "tool_call_id": "call_unexpected_2",
+              "created_at": "2026-11-09T15:28:43.049261764Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case unexpected completed.",
+              "created_at": "2026-11-09T15:28:43.051454889Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:43.134827-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    },
+    {
+      "id": "b8b126e0-0ca8-4a90-9b12-75f0d2ec90f3",
+      "origin": "run",
+      "title": "wrong_arguments",
+      "evals": {
+        "relevance": null,
+        "assertions": [
+          {
+            "name": "lookup called",
+            "type": "tool_called",
+            "value": "lookup_record"
+          }
+        ]
+      },
+      "eval_result": {
+        "passed": true,
+        "successes": [
+          "tool calls",
+          "assertions 1/1"
+        ],
+        "cost": 0,
+        "output_tokens": 15,
+        "checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          },
+          "assertions": {
+            "passed": true,
+            "passed_count": 1,
+            "total": 1,
+            "results": [
+              {
+                "name": "lookup called",
+                "type": "tool_called",
+                "passed": true
+              }
+            ]
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=wrong_arguments. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:43.286479514Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_wrong_arguments_0",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-B\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:43.290503972Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-B\n",
+              "tool_call_id": "call_wrong_arguments_0",
+              "created_at": "2026-11-09T15:28:43.290985514Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_wrong_arguments_1",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:43.294219139Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_wrong_arguments_1",
+              "created_at": "2026-11-09T15:28:43.294480305Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case wrong_arguments completed.",
+              "created_at": "2026-11-09T15:28:43.297112722Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:43.39089-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    }
+  ]
+}

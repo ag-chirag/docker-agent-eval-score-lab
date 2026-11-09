@@ -1,0 +1,278 @@
+{
+  "name": "quick-dawn-793",
+  "timestamp": "2026-11-09T07:28:45.206334-08:00",
+  "duration": "767ms",
+  "config": {
+    "agent": "agent.yaml",
+    "judge_model": "openai/gpt-5.6-terra",
+    "judge_type": "llm",
+    "concurrency": 1,
+    "evals_dir": ".local/evals-comparison",
+    "base_image": "alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f",
+    "agent_image": "docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341",
+    "container_runtime": "docker"
+  },
+  "summary": {
+    "total_evals": 1,
+    "failed_evals": 0,
+    "total_cost": 0,
+    "sizes_passed": 0,
+    "sizes_total": 0,
+    "tools_f1_sum": 0.8,
+    "tools_count": 1,
+    "relevance_passed": 0,
+    "relevance_total": 0,
+    "assertions_passed": 0,
+    "assertions_total": 0
+  },
+  "sessions": [
+    {
+      "id": "0169c49f-5c27-404b-b576-ae8f3ec18b04",
+      "origin": "run",
+      "title": "comparison",
+      "evals": {
+        "relevance": null
+      },
+      "eval_result": {
+        "passed": false,
+        "failures": [
+          "tool calls score 0.80"
+        ],
+        "cost": 0,
+        "output_tokens": 20,
+        "checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        }
+      },
+      "messages": [
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "user",
+              "content": "CASE_ID=comparison. Use the synthetic read-only tools as needed.",
+              "created_at": "2026-11-09T15:28:45.877918959Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_comparison_0",
+                  "type": "function",
+                  "function": {
+                    "name": "lookup_record",
+                    "arguments": "{\"record_id\":\"record-A\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "lookup_record",
+                  "category": "shell",
+                  "description": "Return a synthetic record identifier.",
+                  "parameters": {
+                    "properties": {
+                      "record_id": {
+                        "description": "Synthetic record identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:45.884905417Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "record:record-A\n",
+              "tool_call_id": "call_comparison_0",
+              "created_at": "2026-11-09T15:28:45.885297667Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_comparison_1",
+                  "type": "function",
+                  "function": {
+                    "name": "read_policy",
+                    "arguments": "{\"policy_id\":\"policy-P\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "read_policy",
+                  "category": "shell",
+                  "description": "Return a synthetic policy identifier.",
+                  "parameters": {
+                    "properties": {
+                      "policy_id": {
+                        "description": "Synthetic policy identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "policy_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:45.887995334Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "policy:policy-P\n",
+              "tool_call_id": "call_comparison_1",
+              "created_at": "2026-11-09T15:28:45.888970292Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "tool_calls": [
+                {
+                  "id": "call_comparison_2",
+                  "type": "function",
+                  "function": {
+                    "name": "extra_lookup",
+                    "arguments": "{\"item_id\":\"item-X\"}"
+                  }
+                }
+              ],
+              "tool_definitions": [
+                {
+                  "name": "extra_lookup",
+                  "category": "shell",
+                  "description": "Return a synthetic extra item identifier.",
+                  "parameters": {
+                    "properties": {
+                      "item_id": {
+                        "description": "Synthetic extra item identifier.",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "item_id"
+                    ],
+                    "type": "object"
+                  },
+                  "annotations": {
+                    "idempotentHint": false,
+                    "readOnlyHint": false
+                  },
+                  "outputSchema": null
+                }
+              ],
+              "created_at": "2026-11-09T15:28:45.891023209Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "",
+            "message": {
+              "role": "tool",
+              "content": "extra:item-X\n",
+              "tool_call_id": "call_comparison_2",
+              "created_at": "2026-11-09T15:28:45.891380376Z"
+            }
+          }
+        },
+        {
+          "message": {
+            "agent_name": "root",
+            "message": {
+              "role": "assistant",
+              "content": "Synthetic case comparison completed.",
+              "created_at": "2026-11-09T15:28:45.893374417Z",
+              "usage": {
+                "input_tokens": 10,
+                "output_tokens": 5,
+                "cached_input_tokens": 0,
+                "cached_write_tokens": 0
+              },
+              "model": "fixture/fixture-chat"
+            }
+          }
+        }
+      ],
+      "created_at": "2026-11-09T07:28:45.972885-08:00",
+      "tools_approved": true,
+      "safety_policy": "autonomous",
+      "non_interactive": true,
+      "hide_tool_results": false,
+      "SendUserMessage": true,
+      "max_iterations": 0,
+      "starred": false,
+      "input_tokens": 10,
+      "output_tokens": 5,
+      "cost": 0
+    }
+  ]
+}

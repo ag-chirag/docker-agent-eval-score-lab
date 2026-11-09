@@ -1,0 +1,14 @@
+# Commands from the recorded run; only the host binary path was normalized to the README installation path.
+# The provider port was ephemeral and the fixture server is started by scripts/reproduce.py.
+
+# matrix: CLI exit 0
+TELEMETRY_ENABLED=false FIXTURE_BASE_URL=http://host.docker.internal:56945/matrix/v1 .local/bin/docker-agent-v1.158.0 --config-dir .local/runs/20261109T152839Z-16396/config --data-dir .local/runs/20261109T152839Z-16396/data --cache-dir .local/runs/20261109T152839Z-16396/cache eval agent.yaml .local/evals-matrix --base-image alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f --agent-image docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341 --concurrency 1 --output .local/runs/20261109T152839Z-16396/matrix -e FIXTURE_BASE_URL
+
+# baseline: CLI exit 0
+TELEMETRY_ENABLED=false FIXTURE_BASE_URL=http://host.docker.internal:56945/baseline/v1 .local/bin/docker-agent-v1.158.0 --config-dir .local/runs/20261109T152839Z-16396/config --data-dir .local/runs/20261109T152839Z-16396/data --cache-dir .local/runs/20261109T152839Z-16396/cache eval agent.yaml .local/evals-comparison --base-image alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f --agent-image docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341 --concurrency 1 --output .local/runs/20261109T152839Z-16396/baseline -e FIXTURE_BASE_URL
+
+# candidate: CLI exit 0
+TELEMETRY_ENABLED=false FIXTURE_BASE_URL=http://host.docker.internal:56945/candidate/v1 .local/bin/docker-agent-v1.158.0 --config-dir .local/runs/20261109T152839Z-16396/config --data-dir .local/runs/20261109T152839Z-16396/data --cache-dir .local/runs/20261109T152839Z-16396/cache eval agent.yaml .local/evals-comparison --base-image alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f --agent-image docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341 --concurrency 1 --output .local/runs/20261109T152839Z-16396/candidate -e FIXTURE_BASE_URL --baseline .local/runs/20261109T152839Z-16396/baseline/bold-peak-844.json
+
+# regressed: CLI exit 1
+TELEMETRY_ENABLED=false FIXTURE_BASE_URL=http://host.docker.internal:56945/regressed/v1 .local/bin/docker-agent-v1.158.0 --config-dir .local/runs/20261109T152839Z-16396/config --data-dir .local/runs/20261109T152839Z-16396/data --cache-dir .local/runs/20261109T152839Z-16396/cache eval agent.yaml .local/evals-comparison --base-image alpine@sha256:49340b346798875b5592e5d420241f2f9cfba5f47e62ebb1446a1b34734e898f --agent-image docker/docker-agent@sha256:c85c9c6789be1e6aeea0252d0bfd65c960d61e81ae46e7440b47b24863eb2341 --concurrency 1 --output .local/runs/20261109T152839Z-16396/regressed -e FIXTURE_BASE_URL --baseline .local/runs/20261109T152839Z-16396/baseline/bold-peak-844.json
