@@ -1,0 +1,449 @@
+{
+  "matrix": {
+    "phase": "matrix",
+    "native_summary": {
+      "total_evals": 7,
+      "failed_evals": 0,
+      "total_cost": 0,
+      "sizes_passed": 0,
+      "sizes_total": 0,
+      "tools_f1_sum": 4.6,
+      "tools_count": 5,
+      "relevance_passed": 0,
+      "relevance_total": 0,
+      "assertions_passed": 1,
+      "assertions_total": 1
+    },
+    "cases": [
+      {
+        "case": "empty_expected_no_call",
+        "expected": [],
+        "actual": [],
+        "native_f1": null,
+        "native_pass": true,
+        "native_checks": {},
+        "supplemental_pass": true
+      },
+      {
+        "case": "empty_expected_with_call",
+        "expected": [],
+        "actual": [
+          {
+            "name": "extra_lookup",
+            "arguments": {
+              "item_id": "item-X"
+            }
+          }
+        ],
+        "native_f1": null,
+        "native_pass": true,
+        "native_checks": {},
+        "supplemental_pass": false
+      },
+      {
+        "case": "positive",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "native_f1": 1,
+        "native_pass": true,
+        "native_checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        },
+        "supplemental_pass": true
+      },
+      {
+        "case": "reordered",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          },
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          }
+        ],
+        "native_f1": 1,
+        "native_pass": true,
+        "native_checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        },
+        "supplemental_pass": false
+      },
+      {
+        "case": "repeated",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          },
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          }
+        ],
+        "native_f1": 0.8,
+        "native_pass": false,
+        "native_checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        },
+        "supplemental_pass": false
+      },
+      {
+        "case": "unexpected",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          },
+          {
+            "name": "extra_lookup",
+            "arguments": {
+              "item_id": "item-X"
+            }
+          }
+        ],
+        "native_f1": 0.8,
+        "native_pass": false,
+        "native_checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        },
+        "supplemental_pass": false
+      },
+      {
+        "case": "wrong_arguments",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-B"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "native_f1": 1,
+        "native_pass": true,
+        "native_checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          },
+          "assertions": {
+            "passed": true,
+            "passed_count": 1,
+            "total": 1,
+            "results": [
+              {
+                "name": "lookup called",
+                "type": "tool_called",
+                "passed": true
+              }
+            ]
+          }
+        },
+        "supplemental_pass": false
+      }
+    ]
+  },
+  "baseline": {
+    "phase": "baseline",
+    "native_summary": {
+      "total_evals": 1,
+      "failed_evals": 0,
+      "total_cost": 0,
+      "sizes_passed": 0,
+      "sizes_total": 0,
+      "tools_f1_sum": 1,
+      "tools_count": 1,
+      "relevance_passed": 0,
+      "relevance_total": 0,
+      "assertions_passed": 0,
+      "assertions_total": 0
+    },
+    "cases": [
+      {
+        "case": "comparison",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "native_f1": 1,
+        "native_pass": true,
+        "native_checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        },
+        "supplemental_pass": true
+      }
+    ]
+  },
+  "candidate": {
+    "phase": "candidate",
+    "native_summary": {
+      "total_evals": 1,
+      "failed_evals": 0,
+      "total_cost": 0,
+      "sizes_passed": 0,
+      "sizes_total": 0,
+      "tools_f1_sum": 1,
+      "tools_count": 1,
+      "relevance_passed": 0,
+      "relevance_total": 0,
+      "assertions_passed": 0,
+      "assertions_total": 0
+    },
+    "cases": [
+      {
+        "case": "comparison",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-B"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "native_f1": 1,
+        "native_pass": true,
+        "native_checks": {
+          "tool_calls": {
+            "passed": true,
+            "score": 1
+          }
+        },
+        "supplemental_pass": false
+      }
+    ]
+  },
+  "regressed": {
+    "phase": "regressed",
+    "native_summary": {
+      "total_evals": 1,
+      "failed_evals": 0,
+      "total_cost": 0,
+      "sizes_passed": 0,
+      "sizes_total": 0,
+      "tools_f1_sum": 0.8,
+      "tools_count": 1,
+      "relevance_passed": 0,
+      "relevance_total": 0,
+      "assertions_passed": 0,
+      "assertions_total": 0
+    },
+    "cases": [
+      {
+        "case": "comparison",
+        "expected": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          }
+        ],
+        "actual": [
+          {
+            "name": "lookup_record",
+            "arguments": {
+              "record_id": "record-A"
+            }
+          },
+          {
+            "name": "read_policy",
+            "arguments": {
+              "policy_id": "policy-P"
+            }
+          },
+          {
+            "name": "extra_lookup",
+            "arguments": {
+              "item_id": "item-X"
+            }
+          }
+        ],
+        "native_f1": 0.8,
+        "native_pass": false,
+        "native_checks": {
+          "tool_calls": {
+            "passed": false,
+            "score": 0.8
+          }
+        },
+        "supplemental_pass": false
+      }
+    ]
+  }
+}

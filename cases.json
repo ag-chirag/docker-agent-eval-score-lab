@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "id": "positive",
+      "expected": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "actual": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "contract": "exact"
+    },
+    {
+      "id": "wrong_arguments",
+      "expected": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "actual": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-B"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "assertions": [
+        {"name": "lookup called", "type": "tool_called", "value": "lookup_record"}
+      ],
+      "contract": "exact"
+    },
+    {
+      "id": "reordered",
+      "expected": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "actual": [
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}},
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}}
+      ],
+      "contract": "exact"
+    },
+    {
+      "id": "repeated",
+      "expected": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "actual": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}},
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}}
+      ],
+      "contract": "exact"
+    },
+    {
+      "id": "unexpected",
+      "expected": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+      ],
+      "actual": [
+        {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+        {"name": "read_policy", "arguments": {"policy_id": "policy-P"}},
+        {"name": "extra_lookup", "arguments": {"item_id": "item-X"}}
+      ],
+      "contract": "exact"
+    },
+    {
+      "id": "empty_expected_with_call",
+      "expected": [],
+      "actual": [
+        {"name": "extra_lookup", "arguments": {"item_id": "item-X"}}
+      ],
+      "contract": "no_tools"
+    },
+    {
+      "id": "empty_expected_no_call",
+      "expected": [],
+      "actual": [],
+      "contract": "no_tools"
+    }
+  ],
+  "comparison": {
+    "id": "comparison",
+    "expected": [
+      {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+      {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+    ],
+    "baseline_actual": [
+      {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+      {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+    ],
+    "candidate_actual": [
+      {"name": "lookup_record", "arguments": {"record_id": "record-B"}},
+      {"name": "read_policy", "arguments": {"policy_id": "policy-P"}}
+    ],
+    "regressed_actual": [
+      {"name": "lookup_record", "arguments": {"record_id": "record-A"}},
+      {"name": "read_policy", "arguments": {"policy_id": "policy-P"}},
+      {"name": "extra_lookup", "arguments": {"item_id": "item-X"}}
+    ]
+  }
+}

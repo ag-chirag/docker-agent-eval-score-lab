@@ -1,0 +1,113 @@
+=== matrix (CLI exit 0) ===
+
+Welcome to docker agent! 🚀
+
+For any feedback, please visit: https://docker.qualtrics.com/jfe/form/SV_cNsCIg92nQemlfw
+
+Evaluation run: bright-stone-819
+Loading evaluation sessions...
+Pre-building 1 container image(s)...
+Running 7 evaluations with concurrency 1
+
+✓ empty_expected_no_call ($0.000000)
+✓ empty_expected_with_call ($0.000000)
+✓ positive ($0.000000)
+  ✓ tool calls
+✓ reordered ($0.000000)
+  ✓ tool calls
+✗ repeated ($0.000000)
+  ✗ tool calls score 0.80
+✗ unexpected ($0.000000)
+  ✗ tool calls score 0.80
+✓ wrong_arguments ($0.000000)
+  ✓ tool calls
+  ✓ assertions 1/1
+[██████████] 100% (7/7) ✓5 ✗2 (tools ✗2)
+
+✅     Tool Calls: 92.0% avg F1 (5 evals)
+✅     Assertions: 1/1 passed (100.0%)
+
+Total Cost: $0.000000
+Total Time: 4s
+
+Sessions DB: .local/runs/20261109T152839Z-16396/matrix/bright-stone-819.db
+Sessions JSON: .local/runs/20261109T152839Z-16396/matrix/bright-stone-819.json
+Log: .local/runs/20261109T152839Z-16396/matrix/bright-stone-819.log
+
+=== baseline (CLI exit 0) ===
+Evaluation run: bold-peak-844
+Loading evaluation sessions...
+Pre-building 1 container image(s)...
+Running 1 evaluations with concurrency 1
+
+✓ comparison ($0.000000)
+  ✓ tool calls
+[██████████] 100% (1/1) ✓1 ✗0
+
+✅     Tool Calls: 100.0% avg F1 (1 evals)
+
+Total Cost: $0.000000
+Total Time: 1s
+
+Sessions DB: .local/runs/20261109T152839Z-16396/baseline/bold-peak-844.db
+Sessions JSON: .local/runs/20261109T152839Z-16396/baseline/bold-peak-844.json
+Log: .local/runs/20261109T152839Z-16396/baseline/bold-peak-844.log
+
+=== candidate (CLI exit 0) ===
+Evaluation run: bright-wave-929
+Loading evaluation sessions...
+Pre-building 1 container image(s)...
+Running 1 evaluations with concurrency 1
+
+✓ comparison ($0.000000)
+  ✓ tool calls
+[██████████] 100% (1/1) ✓1 ✗0
+
+✅     Tool Calls: 100.0% avg F1 (1 evals)
+
+Total Cost: $0.000000
+Total Time: 1s
+
+Sessions DB: .local/runs/20261109T152839Z-16396/candidate/bright-wave-929.db
+Sessions JSON: .local/runs/20261109T152839Z-16396/candidate/bright-wave-929.json
+Log: .local/runs/20261109T152839Z-16396/candidate/bright-wave-929.log
+
+Baseline comparison (tolerance 0.000)
+METRIC          BASELINE  CURRENT  DELTA   
+  tool F1 mean  1.000     1.000    +0.000  
+  failure rate  0.000     0.000    +0.000  
+· total cost    0.000     0.000    +0.000  
+
+✅ No regression against baseline
+
+=== regressed (CLI exit 1) ===
+Evaluation run: quick-dawn-793
+Loading evaluation sessions...
+Pre-building 1 container image(s)...
+Running 1 evaluations with concurrency 1
+
+✗ comparison ($0.000000)
+  ✗ tool calls score 0.80
+[██████████] 100% (1/1) ✓0 ✗1 (tools ✗1)
+
+✅     Tool Calls: 80.0% avg F1 (1 evals)
+
+Total Cost: $0.000000
+Total Time: 1s
+
+Sessions DB: .local/runs/20261109T152839Z-16396/regressed/quick-dawn-793.db
+Sessions JSON: .local/runs/20261109T152839Z-16396/regressed/quick-dawn-793.json
+Log: .local/runs/20261109T152839Z-16396/regressed/quick-dawn-793.log
+
+Baseline comparison (tolerance 0.000)
+METRIC          BASELINE  CURRENT  DELTA   
+! tool F1 mean  1.000     0.800    -0.200  
+  failure rate  0.000     0.000    +0.000  
+· total cost    0.000     0.000    +0.000  
+
+Changed evaluations
+! comparison  pass → fail  
+
+❌ Regression against baseline
+Error: evaluation regressed against baseline
+

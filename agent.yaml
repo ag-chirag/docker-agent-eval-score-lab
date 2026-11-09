@@ -1,0 +1,44 @@
+providers:
+  fixture:
+    api_type: openai_chatcompletions
+    base_url: ${env.FIXTURE_BASE_URL}
+
+models:
+  scripted:
+    provider: fixture
+    model: fixture-chat
+    max_tokens: 256
+    temperature: 0
+
+agents:
+  root:
+    model: scripted
+    description: Read-only synthetic records assistant for evaluation calibration.
+    instruction: Use the available read-only tools to answer the user's synthetic case.
+    toolsets:
+      - type: script
+        shell:
+          lookup_record:
+            cmd: 'printf "record:%s\n" "$record_id"'
+            description: Return a synthetic record identifier.
+            required: [record_id]
+            args:
+              record_id:
+                description: Synthetic record identifier.
+                type: string
+          read_policy:
+            cmd: 'printf "policy:%s\n" "$policy_id"'
+            description: Return a synthetic policy identifier.
+            required: [policy_id]
+            args:
+              policy_id:
+                description: Synthetic policy identifier.
+                type: string
+          extra_lookup:
+            cmd: 'printf "extra:%s\n" "$item_id"'
+            description: Return a synthetic extra item identifier.
+            required: [item_id]
+            args:
+              item_id:
+                description: Synthetic extra item identifier.
+                type: string
